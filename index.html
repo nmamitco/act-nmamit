@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NMAMIT Nitte - B.Tech in EnC with ACT</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
+    <link rel="manifest" href="site.webmanifest">
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --primary-color: #1e40af;
+            --secondary-color: #3b82f6;
+            --accent-color: #60a5fa;
+        }
+        .dark-theme {
+            --bg-color: #1a202c;
+            --text-color: #e2e8f0;
+            --primary-color: #3b82f6;
+            --secondary-color: #60a5fa;
+            --accent-color: #90cdf4;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header styles */
+        header {
+            background-color: var(--bg-color);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        .header-hidden {
+            transform: translateY(-100%);
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+            transition: transform 0.3s ease;
+        }
+        .logo:hover img {
+            transform: scale(1.1);
+        }
+        .logo-text h1 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        .logo-text p {
+            font-size: 0.8rem;
+            color: var(--text-color);
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        nav ul li {
+            margin-left: 20px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: bold;
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+        }
+        nav ul li a:hover {
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        .highlight {
+            background-color: var(--primary-color);
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            transition: background-color 0.3s ease;
+        }
+        .highlight:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        /* Mobile menu styles */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+        
+        /* Theme toggle styles */
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-color);
+            margin-left: 20px;
+        }
+        
+        /* Hero section styles */
+        .hero {
+            background-image: url('./back.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.5);
+            transition: background-color 0.3s ease;
+        }
+        .hero:hover::before {
+            background-color: rgba(0,0,0,0.6);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .hero-visible .hero-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px var(--primary-color), 0 0 20px var(--primary-color);
+            }
+            to {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px var(--primary-color), 0 0 40px var(--primary-color);
+            }
+        }
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+        .cta-button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        /* Main content styles */
+        section {
+            padding: 60px 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .section-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+            color: var(--primary-color);
+        }
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+            transform: translateX(-50%);
+            transition: width 0.3s ease;
+        }
+        section:hover h2::after {
+            width: 100px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .card {
+            background-color: var(--bg-color);
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(30, 64, 175, 0.1), transparent);
+            transition: top 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .card:hover::before {
+            top: 0;
+        }
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        .card-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+        .card:hover .card-icon {
+            transform: scale(1.1) rotate(10deg);
+        }
+        
+        /* Download section styles */
+        .download-card {
+            text-align: center;
+        }
+        .download-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+        .download-button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .watermark {
+    text-align: center;
+    padding: 10px 0;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-style: italic;
+    margin-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.watermark a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.watermark a:hover {
+    color: #fff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+        
+        /* Footer styles */
+        footer {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 40px 0;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background-color: #fff;
+            transition: width 0.3s ease;
+        }
+        .footer-section:hover h3::after {
+            width: 50px;
+        }
+        .footer-section ul {
+            list-style: none;
+        }
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        .footer-section ul li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s, transform 0.3s;
+            display: inline-block;
+        }
+        .footer-section ul li a:hover {
+            color: var(--accent-color);
+            transform: translateX(5px);
+        }
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        .social-icons a {
+            color: #fff;
+            font-size: 1.5rem;
+            transition: color 0.3s, transform 0.3s;
+        }
+        .social-icons a:hover {
+            color: var(--accent-color);
+            transform: scale(1.1) rotate(10deg);
+        }
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fadeInUp {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        .float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-wrap: wrap;
+            }
+            .mobile-menu-toggle {
+                display: block;
+            }
+            nav ul {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                background-color: var(--bg-color);
+                position: absolute;
+                top: 100%;
+                left: 0;
+                padding: 20px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            nav ul.show {
+                display: flex;
+            }
+            nav ul li {
+                margin: 10px 0;
+            }
+            .hero h2 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+
+        .footer-section a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            color: #bfdbfe;
+        }
+
+        /* Mobile menu button animations */
+        .mobile-menu-toggle {
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 1001;
+        }
+
+        .mobile-menu-toggle.active {
+            transform: rotate(90deg);
+        }
+
+        nav ul {
+            transition: all 0.3s ease-in-out;
+            transform-origin: top;
+            transform: scaleY(0);
+            opacity: 0;
+        }
+
+        nav ul.show {
+            transform: scaleY(1);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="logo.png" alt="NMAMIT ACT logo">
+                    </a>
+                    <div class="logo-text">
+                        <a href="index.html" style="text-decoration: none; color: inherit;">
+                            <h1>ACT NMAMIT</h1>
+                            <p>B.Tech EnC with ACT</p>
+                        </a>
+                    </div>
+                </div>
+                <nav>
+                    <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">☰</button>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#student-life">Student Life</a></li>
+                        <li><a href="downloads.html">Downloads</a></li>
+                        <li><a href="faculty.html">Faculty</a></li>
+                        <li><a href="class-representatives.html">Class Representatives</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+                <button class="theme-toggle" aria-label="Toggle theme">🌓</button>
+            </div>
+        </div>
+        <div class="highlight">
+            <p>Advanced Communication Technology</p>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h2 class="float pulse">B.Tech EnC with ACT</h2>
+                <p class="slide-in-left">Shaping the Future of Communication Technology</p>
+                <a href="#about" class="cta-button slide-in-right">Explore Our Program</a>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <h2>About Our Program</h2>
+                <div class="grid">
+                    <div class="card animate-fadeInUp">
+                        <div class="card-icon">📡</div>
+                        <h3>Advanced Communication</h3>
+                        <p>Learn cutting-edge communication technologies and protocols.</p>
+                    </div>
+                    <div class="card animate-fadeInUp">
+                        <div class="card-icon">🔬</div>
+                        <h3>Hands-on Labs</h3>
+                        <p>Gain practical experience in state-of-the-art laboratories.</p>
+                    </div>
+                    <div class="card animate-fadeInUp">
+                        <div class="card-icon">👨‍🏫</div>
+                        <h3>Expert Faculty</h3>
+                        <p>Learn from experienced professors and industry experts.</p>
+                    </div>
+                    <div class="card animate-fadeInUp">
+                        <div class="card-icon">🔬</div>
+                        <h3>Research Opportunities</h3>
+                        <p>Engage in innovative research projects and publications.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="student-life">
+            <div class="container">
+                <h2>Student Life</h2>
+                <div class="grid">
+                    <div class="card animate-fadeInUp">
+                        <div class="card-icon">👥</div>
+                        <h3>Student Clubs</h3>
+                        <p>Join various technical and non-technical clubs to explore your interests and develop new skills.</p>
+                    </div>
+                    <div class="card animate-fadeInUp">
+                        <div class="card-icon">💡</div>
+                        <h3>Workshops</h3>
+                        <p>Participate in hands-on workshops and seminars to gain practical knowledge and stay updated with industry trends.</p>
+                    </div>
+                    <div class="card animate-fadeInUp">
+                        <div class="card-icon">🏆</div>
+                        <h3>Competitions</h3>
+                        <p>Showcase your skills in national and international competitions to challenge yourself and gain recognition.</p>
+                    </div>
+                    <div class="card animate-fadeInUp">
+                        <div class="card-icon">🚀</div>
+                        <h3>Projects</h3>
+                        <p>Work on exciting projects with real-world applications to build your portfolio and gain practical experience.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>NMAMIT Nitte</h3>
+                    <p>Nitte, Karkala Taluk,<br>Udupi - 574110<br>Karnataka, India</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#student-life">Student Life</a></li>
+                        <li><a href="downloads.html">Downloads</a></li>
+                        <li><a href="faculty.html">Faculty</a></li>
+                        <li><a href="class-representatives.html">Class Representatives</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Phone: <a href="tel:+918258281263">+91 – 8258 – 281263</a><br>Email: <a href="mailto:principal_nmamit@nitte.edu.in">principal_nmamit@nitte.edu.in</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                        <a href="#" aria-label="LinkedIn">💼</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 ACT Branch 24-28 NMAMIT Nitte. All rights reserved.</p>
+                <div class="watermark">
+                    <p>Made by <a href="https://wa.me/919481594558" target="_blank">R3AP3R editz</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Header hide/show on scroll with smooth transition
+        let lastScrollTop = 0;
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop) {
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                header.style.transform = 'translateY(0)';
+            }
+            lastScrollTop = scrollTop;
+        });
+
+        // Intersection Observer for section animations
+        const sections = document.querySelectorAll('section');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const sectionObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('section-visible');
+                    if (entry.target.id === 'home') {
+                        entry.target.classList.add('hero-visible');
+                    }
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            sectionObserver.observe(section);
+        });
+
+        // Animate cards on scroll with staggered delay
+        const cards = document.querySelectorAll('.card');
+        const cardObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('animate-fadeInUp');
+                    }, index * 100);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        cards.forEach(card => {
+            cardObserver.observe(card);
+        });
+
+        // Download button click simulation with visual feedback
+        const downloadButtons = document.querySelectorAll('.download-button');
+        downloadButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                button.textContent = 'Downloading...';
+                button.style.backgroundColor = '#4CAF50';
+                setTimeout(() => {
+                    button.textContent = 'Downloaded!';
+                    setTimeout(() => {
+                        button.textContent = 'Download';
+                        button.style.backgroundColor = '';
+                    }, 2000);
+                }, 2000);
+            });
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.pageYOffset;
+            document.querySelector('.hero').style.backgroundPositionY = scrollPosition * 0.7 + 'px';
+        });
+
+        // Random color change for card icons on hover
+        const cardIcons = document.querySelectorAll('.card-icon');
+        const colors = ['#1e40af', '#2563eb', '#3b82f6', '#60a5fa', '#93c5fd'];
+        cardIcons.forEach(icon => {
+            icon.addEventListener('mouseover', () => {
+                icon.style.color = colors[Math.floor(Math.random() * colors.length)];
+            });
+            icon.addEventListener('mouseout', () => {
+                icon.style.color = '';
+            });
+            icon.classList.add('pulse');
+        });
+
+        // Mobile menu toggle with animation
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navMenu = document.querySelector('nav ul');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenuToggle.classList.toggle('active');
+            navMenu.classList.toggle('show');
+            mobileMenuToggle.setAttribute('aria-expanded', navMenu.classList.contains('show'));
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('nav') && !e.target.closest('.mobile-menu-toggle')) {
+                mobileMenuToggle.classList.remove('active');
+                navMenu.classList.remove('show');
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // Theme toggle functionality
+        const themeToggle = document.querySelector('.theme-toggle');
+        const body = document.body;
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-theme');
+            themeToggle.textContent = body.classList.contains('dark-theme') ? '☀️' : '🌓';
+        });
+
+        // Add this after the existing card animations
+        const animatedElements = document.querySelectorAll('.slide-in-left, .slide-in-right');
+        const animationObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.style.visibility = 'visible';
+                    entry.target.classList.add('animate');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        animatedElements.forEach(el => {
+            el.style.visibility = 'hidden';
+            animationObserver.observe(el);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Representatives - ACT NMAMIT | Student Leaders</title>
+    <meta name="description" content="Meet the Class Representatives of ACT Branch at NMAMIT Nitte. Student leaders of B.Tech Electronics and Communication Engineering with Advanced Communication Technology.">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
+    <link rel="manifest" href="site.webmanifest">
+    <style>
+        /* Base styles (same as main page) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header styles */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+        .header-hidden {
+            transform: translateY(-100%);
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+        .logo-text h1 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        .logo-text p {
+            font-size: 0.8rem;
+            color: #666;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        nav ul li {
+            margin-left: 20px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: #1e40af;
+        }
+        .highlight {
+            background-color: #1e40af;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        /* Main content styles */
+        main {
+            padding-top: 100px;
+        }
+        section {
+            padding: 60px 0;
+        }
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #1e40af;
+        }
+
+        /* CR Card specific styles */
+        .cr-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: visible;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            max-width: 400px;
+            margin: 0 auto;
+            margin-top: 40px;
+            padding-top: 20px;
+        }
+
+        .cr-image {
+            width: 200px;
+            height: 200px;
+            min-width: 200px;
+            min-height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin: 20px auto;
+            display: block;
+            border: 4px solid #1e40af;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cr-card:hover .cr-image {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+
+        .cr-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .cr-name {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #1e40af;
+        }
+
+        .cr-position {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .cr-details {
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        /* WhatsApp button styles */
+        .whatsapp-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #25D366;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .whatsapp-button:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .whatsapp-icon {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #1e40af;
+            color: #fff;
+            padding: 40px 0;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        .footer-section ul {
+            list-style: none;
+        }
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        .footer-section ul li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-section ul li a:hover {
+            color: #bfdbfe;
+        }
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        .social-icons a {
+            color: #fff;
+            font-size: 1.5rem;
+            transition: color 0.3s, transform 0.3s;
+        }
+        .social-icons a:hover {
+            color: #bfdbfe;
+            transform: scale(1.1);
+        }
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Mobile menu styles */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #333;
+            padding: 5px 10px;
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            z-index: 1002;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-wrap: wrap;
+                position: relative;
+                padding: 10px 0;
+            }
+
+            .logo {
+                margin-right: 60px;
+                padding-left: 15px;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+                transform-origin: center;
+            }
+
+            nav {
+                width: 100%;
+                order: 3;
+            }
+
+            nav ul {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                background-color: #fff;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                padding: 20px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                z-index: 1001;
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 15px 0;
+                text-align: center;
+            }
+
+            nav ul li a {
+                display: block;
+                padding: 10px;
+                font-size: 1.1rem;
+            }
+
+            .mobile-menu-toggle.active {
+                transform: rotate(90deg);
+                color: #1e40af;
+            }
+        }
+
+        .watermark {
+            text-align: center;
+            padding: 10px 0;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-style: italic;
+            margin-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .watermark a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .watermark a:hover {
+            color: #fff;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Footer link styles */
+        .footer-section a {
+            color: #fff !important; /* Force white color */
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #bfdbfe !important;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Contact info specific styles */
+        .footer-section p a {
+            color: #fff !important;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section p a:hover {
+            color: #bfdbfe !important;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="./logo.png" alt="NMAMIT ACT logo">
+                    </a>
+                    <div class="logo-text">
+                        <a href="index.html" style="text-decoration: none; color: inherit;">
+                            <h1>ACT NMAMIT</h1>
+                            <p>B.Tech EnC with ACT</p>
+                        </a>
+                    </div>
+                </div>
+                <nav>
+                    <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">☰</button>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#curriculum">Curriculum</a></li>
+                        <li><a href="index.html#student-life">Student Life</a></li>
+                        <li><a href="downloads.html">Downloads</a></li>
+                        <li><a href="faculty.html">Faculty</a></li>
+                        <li><a href="class-representatives.html">Class Representatives</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="highlight">
+            <p>Advanced Communication Technology</p>
+        </div>
+    </header>
+
+    <main>
+        <section id="class-representatives">
+            <div class="container">
+                <h2>Class Representatives</h2>
+                <div class="cr-card animate-fadeInUp">
+                    <img src="CR.jpg" alt="Akash Yalawar" class="cr-image">
+                    <div class="cr-info">
+                        <h3 class="cr-name">Akash Yalawar</h3>
+                        <p class="cr-position">Class Representative</p>
+                        <p class="cr-details">B.Tech Electronics and Communication (ACT) 2024-28 Batch</p>
+                        <a href="https://wa.me/916360192963" class="whatsapp-button" target="_blank">
+                            <span class="whatsapp-icon">💬</span>
+                            Message on WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>NMAMIT Nitte</h3>
+                    <p>Nitte, Karkala Taluk,<br>Udupi - 574110<br>Karnataka, India</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#student-life">Student Life</a></li>
+                        <li><a href="downloads.html">Downloads</a></li>
+                        <li><a href="faculty.html">Faculty</a></li>
+                        <li><a href="class-representatives.html">Class Representatives</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Phone: <a href="tel:+918258281263">+91 – 8258 – 281263</a><br>Email: <a href="mailto:principal_nmamit@nitte.edu.in">principal_nmamit@nitte.edu.in</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                        <a href="#" aria-label="LinkedIn">💼</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 ACT Branch 24-28 NMAMIT Nitte. All rights reserved.</p>
+                <div class="watermark">
+                    <p>Made by <a href="https://wa.me/919481594558" target="_blank">R3AP3R editz</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle with animation
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navMenu = document.querySelector('nav ul');
+
+        if (mobileMenuToggle && navMenu) {
+            mobileMenuToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                mobileMenuToggle.classList.toggle('active');
+                navMenu.classList.toggle('show');
+                mobileMenuToggle.setAttribute('aria-expanded', navMenu.classList.contains('show'));
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('nav') && !e.target.closest('.mobile-menu-toggle')) {
+                    mobileMenuToggle.classList.remove('active');
+                    navMenu.classList.remove('show');
+                    mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            // Close menu when clicking a link
+            navMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenuToggle.classList.remove('active');
+                    navMenu.classList.remove('show');
+                    mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                });
+            });
+        }
+    </script>
+</body>
+</html> 

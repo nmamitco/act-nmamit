@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Download study materials, syllabus, and important documents for ACT Branch at NMAMIT Nitte. Access course materials and resources for B.Tech ECE with ACT.">
+    <title>Downloads - ACT NMAMIT | Study Materials and Resources</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
+    <link rel="manifest" href="site.webmanifest">
+    <style>
+        /* Base styles (same as main page) */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header styles (same as main page) */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+        .header-hidden {
+            transform: translateY(-100%);
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+        .logo-text h1 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        .logo-text p {
+            font-size: 0.8rem;
+            color: #666;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        nav ul li {
+            margin-left: 20px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: #1e40af;
+        }
+        .highlight {
+            background-color: #1e40af;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+        
+        /* Main content styles */
+        main {
+            padding-top: 100px;
+        }
+        section {
+            padding: 60px 0;
+        }
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #1e40af;
+        }
+        .downloads-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .download-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .download-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        .download-info {
+            padding: 20px;
+        }
+        .download-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #1e40af;
+        }
+        .download-description {
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        .download-button {
+            display: inline-block;
+            background-color: #1e40af;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .download-button:hover {
+            background-color: #1e3a8a;
+            transform: scale(1.05);
+        }
+        
+        .download-progress {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 0;
+            background-color: rgba(255, 255, 255, 0.2);
+            transition: width 0.5s ease;
+        }
+
+        .downloading .download-text {
+            opacity: 0;
+        }
+
+        .downloading .download-progress {
+            width: 100%;
+        }
+
+        .download-button::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: -100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .downloading::after {
+            left: 100%;
+        }
+
+        @keyframes downloadComplete {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Footer styles (same as main page) */
+        footer {
+            background-color: #1e40af;
+            color: #fff;
+            padding: 40px 0;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        .footer-section ul {
+            list-style: none;
+        }
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        .footer-section ul li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-section ul li a:hover {
+            color: #bfdbfe;
+        }
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        .social-icons a {
+            color: #fff;
+            font-size: 1.5rem;
+            transition: color 0.3s, transform 0.3s;
+        }
+        .social-icons a:hover {
+            color: #bfdbfe;
+            transform: scale(1.1);
+        }
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fadeInUp {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        .animate-pulse {
+            animation: pulse 1s ease infinite;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        .slide-in-left {
+            animation: slideInLeft 0.6s ease forwards;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        .slide-in-right {
+            animation: slideInRight 0.6s ease forwards;
+        }
+        .watermark {
+    text-align: center;
+    padding: 10px 0;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-style: italic;
+    margin-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.watermark a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.watermark a:hover {
+    color: #fff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            nav {
+                margin-top: 20px;
+                width: 100%;
+            }
+            nav ul {
+                flex-direction: column;
+            }
+            nav ul li {
+                margin-left: 0;
+                margin-bottom: 10px;
+            }
+            .mobile-menu-toggle {
+                display: block;
+            }
+            nav ul {
+                display: none;
+            }
+            nav.active ul {
+                display: block;
+            }
+        }
+
+        .footer-section a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            color: #bfdbfe;
+        }
+
+        /* Mobile menu styles */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #333;
+            padding: 5px 10px;
+            margin-right: 10px;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-wrap: wrap;
+                position: relative;
+            }
+            .mobile-menu-toggle {
+                display: block;
+            }
+            nav ul {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                background-color: #fff;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                padding: 20px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                z-index: 1000;
+            }
+            nav ul.show {
+                display: flex;
+            }
+            nav ul li {
+                margin: 10px 0;
+                text-align: center;
+            }
+        }
+
+        /* Mobile menu button animations */
+        .mobile-menu-toggle {
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 1001;
+        }
+
+        .mobile-menu-toggle.active {
+            transform: rotate(90deg);
+        }
+
+        nav ul {
+            transition: all 0.3s ease-in-out;
+            transform-origin: top;
+            transform: scaleY(0);
+            opacity: 0;
+        }
+
+        nav ul.show {
+            transform: scaleY(1);
+            opacity: 1;
+        }
+
+        /* Enhanced download button animations */
+        .download-button {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .download-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            animation: shine 1.5s infinite;
+        }
+
+        @keyframes shine {
+            100% {
+                left: 100%;
+            }
+        }
+
+        .downloading {
+            background: linear-gradient(-45deg, #1e40af, #3b82f6, #1e40af);
+            background-size: 200% 200%;
+            animation: gradient 1s ease infinite;
+            transform: scale(0.95);
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .download-success {
+            background-color: #22c55e !important;
+            transform: scale(1.1);
+            animation: success 0.5s ease;
+        }
+
+        @keyframes success {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1.1); }
+        }
+
+        .download-text {
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .downloading .download-text::after {
+            content: '...';
+            position: absolute;
+            animation: dots 1.5s infinite;
+        }
+
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40%, 60% { content: '..'; }
+            80%, 100% { content: '...'; }
+        }
+
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(0);
+            animation: ripple 0.6s linear;
+            pointer-events: none;
+        }
+
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* Card hover effects */
+        .download-card {
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            transition: transform 0.5s ease;
+        }
+
+        .download-card:hover {
+            transform: translateY(-10px) rotateX(5deg);
+        }
+
+        .download-info {
+            transform-style: preserve-3d;
+        }
+
+        .download-title {
+            transition: transform 0.3s ease;
+        }
+
+        .download-card:hover .download-title {
+            transform: translateZ(20px);
+            color: #1e40af;
+        }
+
+        /* Floating animation */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Glow animation */
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 0 5px rgba(30, 64, 175, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(30, 64, 175, 0.6);
+            }
+        }
+
+        /* Apply animations */
+        .download-card {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .download-card:hover {
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        /* Download progress animation */
+        .downloading .download-progress {
+            width: 100%;
+            background: linear-gradient(90deg, 
+                rgba(255,255,255,0.1), 
+                rgba(255,255,255,0.2), 
+                rgba(255,255,255,0.1)
+            );
+            background-size: 200% 100%;
+            animation: downloadProgress 1s linear infinite;
+        }
+
+        @keyframes downloadProgress {
+            0% {
+                background-position: -200% 0;
+            }
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        /* Success animation */
+        @keyframes successPop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .download-success {
+            animation: successPop 0.5s ease-out;
+        }
+
+        /* New Download Button Animation Styles */
+        .download-button {
+            position: relative;
+            overflow: visible;
+            padding: 10px 40px;
+        }
+
+        .download-icon {
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .download-text {
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        /* Parachute Animation */
+        @keyframes parachuteDown {
+            0% {
+                top: -100px;
+                transform: translateX(-50%) scale(1);
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+                transform: translateX(-50%) scale(1.2);
+            }
+            60% {
+                transform: translateX(-50%) scale(1) rotate(0deg);
+            }
+            80% {
+                transform: translateX(-50%) scale(1) rotate(5deg);
+            }
+            90% {
+                transform: translateX(-50%) scale(1) rotate(-5deg);
+            }
+            100% {
+                top: 50%;
+                transform: translateX(-50%) scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        @keyframes buttonGlow {
+            0% { box-shadow: 0 0 5px rgba(30, 64, 175, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(30, 64, 175, 0.8); }
+            100% { box-shadow: 0 0 5px rgba(30, 64, 175, 0.5); }
+        }
+
+        .downloading {
+            animation: buttonGlow 1s infinite;
+        }
+
+        .downloading .download-icon {
+            opacity: 1;
+            animation: parachuteDown 1.5s ease forwards;
+        }
+
+        .downloading .download-text {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        /* Success Animation */
+        @keyframes successPop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .download-success {
+            background-color: #22c55e !important;
+            animation: successPop 0.5s ease;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            width: 0;
+            background: linear-gradient(90deg, #60a5fa, #1e40af);
+            transition: width 1.5s ease;
+        }
+
+        .downloading .progress-bar {
+            width: 100%;
+        }
+
+        /* Parachute Download Button Styles */
+        .download-button {
+            position: relative;
+            padding: 10px 20px;
+            overflow: visible;
+            background: #1e40af;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .download-button .parachute {
+            position: absolute;
+            top: -150px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2em;
+            opacity: 0;
+            transition: all 0.5s ease;
+            pointer-events: none;
+        }
+
+        .download-button .text {
+            transition: all 0.3s ease;
+        }
+
+        @keyframes parachuteDown {
+            0% {
+                top: -150px;
+                transform: translateX(-50%) rotate(0deg);
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+                transform: translateX(-50%) rotate(-10deg);
+            }
+            40% {
+                transform: translateX(-50%) rotate(10deg);
+            }
+            60% {
+                transform: translateX(-50%) rotate(-10deg);
+            }
+            80% {
+                transform: translateX(-50%) rotate(10deg);
+            }
+            100% {
+                top: 50%;
+                transform: translateX(-50%) rotate(0deg) scale(0.5);
+                opacity: 1;
+            }
+        }
+
+        @keyframes buttonPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .downloading {
+            animation: buttonPulse 1s infinite;
+            background: #22c55e;
+        }
+
+        .downloading .parachute {
+            animation: parachuteDown 2s ease forwards;
+        }
+
+        .downloading .text {
+            opacity: 0;
+        }
+
+        .download-complete .parachute {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .download-complete .text {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="./logo.png" alt="NMAMIT ACT logo">
+                    </a>
+                    <div class="logo-text">
+                        <a href="index.html" style="text-decoration: none; color: inherit;">
+                            <h1>ACT NMAMIT</h1>
+                            <p>B.Tech EnC with ACT</p>
+                        </a>
+                    </div>
+                </div>
+                <nav>
+                    <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">☰</button>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#curriculum">Curriculum</a></li>
+                        <li><a href="index.html#student-life">Student Life</a></li>
+                        <li><a href="downloads.html">Downloads</a></li>
+                        <li><a href="faculty.html">Faculty</a></li>
+                        <li><a href="class-representatives.html">Class Representatives</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="highlight">
+            <p>Advanced Communication Technology</p>
+        </div>
+    </header>
+
+    <main>
+        <section id="downloads">
+            <div class="container">
+                <h2>Downloads</h2>
+                <div class="downloads-grid">
+                    <div class="download-card animate-fadeInUp slide-in-left">
+                        <div class="download-info">
+                            <h3 class="download-title">ACT Branch Circular for 2024-28</h3>
+                            <p class="download-description">4 years updates for ACT branch students.</p>
+                            <a href="https://rtx.megavault.in/file?path=/4UYBL0/DE88YJ" class="download-button" onclick="startDownload(this, event)">
+                                <span class="parachute">🪂</span>
+                                <span class="text">Download</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="download-card animate-fadeInUp slide-in-right">
+                        <div class="download-info">
+                            <h3 class="download-title">Chemistry Lab MSE TimeTable</h3>
+                            <p class="download-description">Midsem examination schedule for Chemistry Laboratory.</p>
+                            <a href="https://rtx.megavault.in/file?path=/4UYBL0/648L95" class="download-button" onclick="animateDownload(this)">
+                                <span class="download-text">Download</span>
+                                <span class="download-progress"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>NMAMIT Nitte</h3>
+                    <p>Nitte, Karkala Taluk,<br>Udupi - 574110<br>Karnataka, India</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#student-life">Student Life</a></li>
+                        <li><a href="downloads.html">Downloads</a></li>
+                        <li><a href="faculty.html">Faculty</a></li>
+                        <li><a href="class-representatives.html">Class Representatives</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Phone: <a href="tel:+918258281263">+91 – 8258 – 281263</a><br>Email: <a href="mailto:principal_nmamit@nitte.edu.in">principal_nmamit@nitte.edu.in</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                        <a href="#" aria-label="LinkedIn">💼</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 ACT Branch 24-28 NMAMIT Nitte. All rights reserved.</p>
+                <div class="watermark">
+                    <p>Made by <a href="https://wa.me/919481594558" target="_blank">R3AP3R editz</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header hide/show on scroll
+        let lastScrollTop = 0;
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop) {
+                header.classList.add('header-hidden');
+            } else {
+                header.classList.remove('header-hidden');
+            }
+            lastScrollTop = scrollTop;
+        });
+
+        // Intersection Observer for download card animations
+        const cards = document.querySelectorAll('.download-card');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const cardObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fadeInUp');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        cards.forEach(card => {
+            cardObserver.observe(card);
+        });
+
+        function animateDownload(button) {
+            if (button.classList.contains('downloading')) return;
+            
+            button.classList.add('downloading');
+            const text = button.querySelector('.download-text');
+            const icon = button.querySelector('.download-icon');
+            
+            // Start parachute animation
+            setTimeout(() => {
+                // Show progress bar
+                button.classList.add('downloading-progress');
+                
+                // Complete download
+                setTimeout(() => {
+                    button.classList.remove('downloading');
+                    button.classList.add('download-success');
+                    text.textContent = 'Download Started!';
+                    text.style.opacity = '1';
+                    icon.style.opacity = '0';
+                    
+                    // Reset button
+                    setTimeout(() => {
+                        button.classList.remove('download-success');
+                        text.textContent = 'Download';
+                        button.classList.remove('downloading-progress');
+                    }, 1500);
+                }, 2000);
+            }, 100);
+        }
+
+        // Add hover effect for download buttons
+        document.querySelectorAll('.download-button').forEach(button => {
+            button.addEventListener('mouseover', () => {
+                const icon = button.querySelector('.download-icon');
+                icon.style.transform = 'translateY(-5px)';
+            });
+            
+            button.addEventListener('mouseout', () => {
+                const icon = button.querySelector('.download-icon');
+                icon.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Mobile menu toggle with animation
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navMenu = document.querySelector('nav ul');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenuToggle.classList.toggle('active');
+            navMenu.classList.toggle('show');
+            mobileMenuToggle.setAttribute('aria-expanded', navMenu.classList.contains('show'));
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('nav') && !e.target.closest('.mobile-menu-toggle')) {
+                mobileMenuToggle.classList.remove('active');
+                navMenu.classList.remove('show');
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // Add hover effect for cards
+        document.querySelectorAll('.download-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+            });
+        });
+
+        function startDownload(button, event) {
+            event.preventDefault();
+            
+            if (button.classList.contains('downloading')) return;
+            
+            button.classList.add('downloading');
+            const text = button.querySelector('.text');
+            text.textContent = 'Downloading...';
+            
+            setTimeout(() => {
+                button.classList.remove('downloading');
+                button.classList.add('download-complete');
+                text.textContent = 'Download Started!';
+                
+                setTimeout(() => {
+                    button.classList.remove('download-complete');
+                    text.textContent = 'Download';
+                    // Start actual download
+                    window.location.href = button.href;
+                }, 1500);
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
