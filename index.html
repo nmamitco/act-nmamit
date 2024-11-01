@@ -512,13 +512,13 @@
                 <nav>
                     <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">☰</button>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="index.html#about">About</a></li>
-                        <li><a href="index.html#student-life">Student Life</a></li>
-                        <li><a href="downloads.html">Downloads</a></li>
-                        <li><a href="faculty.html">Faculty</a></li>
-                        <li><a href="class-representatives.html">Class Representatives</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="./index.html">Home</a></li>
+                        <li><a href="./index.html#about">About</a></li>
+                        <li><a href="./index.html#student-life">Student Life</a></li>
+                        <li><a href="./downloads.html">Downloads</a></li>
+                        <li><a href="./faculty.html">Faculty</a></li>
+                        <li><a href="./class-representatives.html">Class Representatives</a></li>
+                        <li><a href="./contact.html">Contact</a></li>
                     </ul>
                 </nav>
                 <button class="theme-toggle" aria-label="Toggle theme">🌓</button>
@@ -778,7 +778,7 @@
         // Register service worker
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/service-worker.js')
+                navigator.serviceWorker.register('./service-worker.js')
                     .then((registration) => {
                         console.log('ServiceWorker registration successful with scope: ', registration.scope);
                     })
