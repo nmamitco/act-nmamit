@@ -332,36 +332,38 @@
         
         /* Footer styles */
         footer {
-            background-color: var(--primary-color);
+            background-color: #1e40af;
             color: #fff;
             padding: 40px 0;
+            text-align: center;
         }
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .footer-section {
+            margin-bottom: 20px;
         }
         .footer-section h3 {
             font-size: 1.2rem;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             position: relative;
-            display: inline-block;
         }
         .footer-section h3::after {
             content: '';
             position: absolute;
             bottom: -5px;
             left: 0;
-            width: 30px;
+            width: 50px;
             height: 2px;
             background-color: #fff;
-            transition: width 0.3s ease;
-        }
-        .footer-section:hover h3::after {
-            width: 50px;
         }
         .footer-section ul {
             list-style: none;
+            padding: 0;
         }
         .footer-section ul li {
             margin-bottom: 10px;
@@ -369,31 +371,26 @@
         .footer-section ul li a {
             color: #fff;
             text-decoration: none;
-            transition: color 0.3s, transform 0.3s;
-            display: inline-block;
+            transition: color 0.3s ease;
         }
         .footer-section ul li a:hover {
-            color: var(--accent-color);
-            transform: translateX(5px);
-        }
-        .social-icons {
-            display: flex;
-            gap: 15px;
-        }
-        .social-icons a {
-            color: #fff;
-            font-size: 1.5rem;
-            transition: color 0.3s, transform 0.3s;
-        }
-        .social-icons a:hover {
-            color: var(--accent-color);
-            transform: scale(1.1) rotate(10deg);
+            color: #60a5fa;
         }
         .copyright {
-            text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+        .watermark {
+            margin-top: 10px;
+            font-size: 0.8rem;
+        }
+        .watermark a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .watermark a:hover {
+            color: #60a5fa;
         }
         
         /* Animations */
