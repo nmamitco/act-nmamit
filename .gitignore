@@ -1,0 +1,41 @@
+# System files
+.DS_Store
+Thumbs.db
+
+# Editor directories and files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Dependency directories
+node_modules/
+vendor/
+
+# Build output
+dist/
+build/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Log files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE specific files
+*.sublime-project
+*.sublime-workspace
+*.komodoproject
+.komodotools/
+.idea/
+.project
+.classpath
+.settings/
+*.tmproj
+*.esproj
+nbproject/ 
