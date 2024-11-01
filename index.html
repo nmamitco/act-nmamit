@@ -135,7 +135,7 @@
         
         /* Hero section styles */
         .hero {
-            background-image: url('./back.jpg');
+            background-image: url('img/back.jpg');
             background-size: cover;
             background-position: center;
             height: 100vh;
@@ -492,7 +492,7 @@
             <div class="header-content">
                 <div class="logo">
                     <a href="index.html">
-                        <img src="logo.png" alt="NMAMIT ACT logo">
+                        <img src="img/logo.png" alt="NMAMIT ACT logo">
                     </a>
                     <div class="logo-text">
                         <a href="index.html" style="text-decoration: none; color: inherit;">
@@ -625,7 +625,7 @@
             <div class="copyright">
                 <p>&copy; 2024 ACT Branch 24-28 NMAMIT Nitte. All rights reserved.</p>
                 <div class="watermark">
-                    <p>Made by <a href="https://wa.me/919481594558" target="_blank">R3AP3R editz</a></p>
+                    <p>Made by <a href="madeby.html" target="_blank">R3AP3R editz</a></p>
                 </div>
             </div>
         </div>
@@ -775,6 +775,51 @@
         animatedElements.forEach(el => {
             el.style.visibility = 'hidden';
             animationObserver.observe(el);
+        });
+
+        // Register service worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then((registration) => {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    })
+                    .catch((error) => {
+                        console.log('ServiceWorker registration failed: ', error);
+                    });
+            });
+        }
+
+        // Handle the beforeinstallprompt event
+        let deferredPrompt;
+        const addBtn = document.createElement('button');
+        addBtn.textContent = 'Install App';
+        addBtn.style.display = 'none';
+        document.body.appendChild(addBtn);
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            // Prevent the mini-infobar from appearing on mobile
+            e.preventDefault();
+            // Stash the event so it can be triggered later.
+            deferredPrompt = e;
+            // Update UI notify the user they can install the PWA
+            addBtn.style.display = 'block';
+
+            addBtn.addEventListener('click', () => {
+                // Hide the app provided install promotion
+                addBtn.style.display = 'none';
+                // Show the install prompt
+                deferredPrompt.prompt();
+                // Wait for the user to respond to the prompt
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the install prompt');
+                    } else {
+                        console.log('User dismissed the install prompt');
+                    }
+                    deferredPrompt = null;
+                });
+            });
         });
     </script>
 </body>
