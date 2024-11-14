@@ -24,12 +24,12 @@ This repository contains the source code for the NMAMIT ACT Branch website. The 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/R3AP3Reditz/act.nmamit.git
+   git clone https://github.com/nmamitco/act-nmamit.git
    ```
 
 2. Navigate to the project directory:
    ```bash
-   cd act.nmamit
+   cd act-nmamit
    ```
 
 3. Open `index.html` in your browser to view the site locally.
